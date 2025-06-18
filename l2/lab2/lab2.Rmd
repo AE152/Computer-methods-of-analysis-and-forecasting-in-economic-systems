@@ -1,0 +1,43 @@
+---
+title: "Экономический анализ"
+output: 
+  flexdashboard::flex_dashboard:
+    orientation: columns
+    vertical_layout: fill
+  runtime: shiny
+---
+Динамика экономических показателей
+
+```{r setup, include=FALSE}
+library(flexdashboard)
+```
+
+Column {data-width=650}
+-----------------------------------------------------------------------
+
+### Безработица
+
+```{r}
+library(ggplot2)
+ggplot(data = economics, aes(x = date, y = unemploy)) +
+ geom_line(color = "blue") +
+ labs(title = "Динамика уровня безработицы", x = "Год", y = "Количество
+безработных") +
+ theme_minimal()
+```
+
+Column {data-width=350}
+-----------------------------------------------------------------------
+
+### Инфляция
+
+```{r}
+inflation <- rnorm(100, mean = 3, sd = 1)
+ggplot(data = data.frame(inflation), aes(x = inflation)) +
+ geom_histogram(binwidth = 0.5, fill = "lightgreen", color = "black") +
+ labs(title = "Распределение уровня инфляции", x = "Инфляция", y =
+"Частота") +
+ theme_minimal()
+```
+
+

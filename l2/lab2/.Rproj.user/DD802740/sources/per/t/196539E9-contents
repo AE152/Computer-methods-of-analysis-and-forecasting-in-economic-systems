@@ -1,0 +1,20 @@
+yaml
+ title: "Экономический анализ"
+ output: flexdashboard::flex_dashboard
+ runtime: shiny
+  markdown
+ Динамика экономических показателей
+
+ Безработица
+
+
+```{r}
+library(ggplot2)
+ ggplot(data = economics, aes(x = date, y = unemploy)) +
+ geom_line(color = "blue") +
+ labs(title = "Динамика уровня безработицы", x = "Год", y = "Количество
+безработных") +
+ theme_minimal()
+ 
+```
+ 
